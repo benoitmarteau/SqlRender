@@ -121,7 +121,9 @@ public class SqlRender {
 		str = str.trim();
 		List<Span> spans = findParentheses(str);
 		// Spans are in order of closing parenthesis, so if we go from first to last we'll always process nested parentheses first
-		System.out.println(str);
+		System.out.println("Captured Java Output: " +str);
+        printStream.flush();
+        return outputStream.toString();
 		for (Span span : spans)
 			if (!precededByIn(span.start, str)) {
 				System.out.println(str.substring(span.start + 1, span.end - 1));
