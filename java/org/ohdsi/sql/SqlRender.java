@@ -121,10 +121,10 @@ public class SqlRender {
 		str = str.trim();
 		List<Span> spans = findParentheses(str);
 		// Spans are in order of closing parenthesis, so if we go from first to last we'll always process nested parentheses first
-		System.err.println(str);
+		System.out.println(str);
 		for (Span span : spans)
 			if (!precededByIn(span.start, str)) {
-				System.err.println(str.substring(span.start + 1, span.end - 1));
+				System.out.println(str.substring(span.start + 1, span.end - 1));
 				boolean evaluation = evaluateBooleanCondition(str.substring(span.start + 1, span.end - 1));
 				str = StringUtils.replaceCharAt(str, span.start, evaluation ? '1' : '0');
 				str = replace(str, spans, span.start, span.end, span.start, span.start);
